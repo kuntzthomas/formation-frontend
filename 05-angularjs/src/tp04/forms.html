@@ -1,0 +1,43 @@
+<section id="tp04" ng-controller="FormsCtrl as ctrl">
+    <h1>TP 04 - Formulaire</h1>
+
+    <!-- Test 1 : model binding -->
+    <!-- TODO : ajouter l'affichage des données saisies via un modèle -->
+    <form novalidate name="form1">
+        Name: <input type="text" ng-model="name" /><br> E-mail: <input type="email" ng-model="email" /><br>
+        <p>{"name": "{{name}}","email": "{{email}}"}</p>
+    </form>
+    <!-- Test 2 : 2 états-->
+    <!-- TODO :
+- ajouter un bouton de sauvegarde et un bouton de reset
+- ajouter l'affichage de l'état édition et de l'état tampon
+-->
+    <form novalidate name="form2">
+        Name: <input type="text" ng-model="ctrl.user.name" /><br> E-mail: <input type="email" ng-model="ctrl.user.email"
+        /><br>
+        <p>Current: {"name": "{{ctrl.user.name}}","email": "{{ctrl.user.email}}"}</p>
+        <p>Saved: {"name": "{{ctrl.userSaved.name}}","email": "{{ctrl.userSaved.email}}"}</p>
+        <div>
+            <button ng-click="ctrl.reset()">RESET</button>
+            <button ng-click="ctrl.update(ctrl.user)">SAVE</button>
+        </div>
+    </form>
+
+
+    <!-- Test 3 : validation -->
+    <!-- TODO : ajouter une validation Angular avec affichage des erreurs et
+utilisation des classes CSS -->
+    <form novalidate name="form3" id="form3">
+        Name: <input type="text" name="name2" ng-model="name2" required/><br> E-mail: <input type="email" name="email2" ng-model="email2"
+            required/><br>
+    </form>
+    <div ng-show="form3.name2.$dirty && form3.name2.$invalid">
+        <span ng-show="form3.name2.$error.required">Invalid: Tell us your name.</span>
+    </div>
+    <div ng-show="form3.email2.$dirty && form3.email2.$invalid">
+        <span ng-show="form3.email2.$error.required">Invalid: Tell us your email.</span>
+        <span ng-show="form3.email2.$error.email">This is not a valid email.</span>
+    </div>
+    <p>Errors : {"required": {{form3.email2.$error.required}} ,"email": {{form3.email2.$error.email}} }</p>
+
+</section>
