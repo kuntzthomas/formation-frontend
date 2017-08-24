@@ -1,3 +1,5 @@
+import css from "./forms.css";
+
 export default class FormsCtrl {
   constructor() {
     this.userSaved;
@@ -8,6 +10,6 @@ export default class FormsCtrl {
   }
 
   update(user) {
-    this.userSaved = angular.copy(user)
+    this.userSaved = angular.copy(user);
   }
 }
