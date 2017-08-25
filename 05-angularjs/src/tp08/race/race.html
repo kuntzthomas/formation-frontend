@@ -1,0 +1,20 @@
+<section id="tp08">
+    <h1>TP 08 - Modules</h1>
+    <div ng-controller="RaceCtrl as ctrl">
+        <h3>Pariez!</h3>
+        <div class="btn-group" data-togle="buttons">
+            <a ng-repeat="racer in ctrl.walkerList" ng-click="ctrl.parie = racer.name" class="btn btn-{{racer.shirt}}">{{racer.name}}</a>
+        </div><br><br>
+        <p>Vous pariez sur: {{ctrl.parie}}</p>
+        <button class="btn" ng-click="ctrl.start()">Lancer la course</button>
+        <br><br>
+        <div ng-repeat="walker in ctrl.walkerList">
+            <div class="progress">
+                <div class="progress-bar progress-bar-{{walker.shirt}} progress-bar-striped active" role="progressbar" aria-valuenow={{walker.progress}}
+                    aria-valuemin="0" aria-valuemax="100" ng-style="{width:walker.progress + '%'}">
+                </div>
+            </div>
+        </div>
+        <button class="btn" ng-click="ctrl.reset()">Reset</button>
+    </div>
+</section>

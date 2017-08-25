@@ -1,0 +1,18 @@
+<section>
+    <h1>TP 07 - Services</h1>
+    <div ng-controller="TripsCommentsCtrl as ctrl">
+        <select ng-model="ctrl.tripId" ng-change="ctrl.steps() || ctrl.comment()">
+            <option ng-repeat="trip in ctrl.trip" value="{{trip.id}}">{{trip.name}}</option>
+        </select>
+        <br><br>
+        <img ng-repeat="step in ctrl.stepFound.steps" ng-src="{{step.imageUrl}}" style="width: 200px">
+
+        <ul>
+            <li ng-repeat="comment in ctrl.commentFound.comments">{{comment.id}}: {{comment.text}}</li>
+        </ul>
+        <textarea ng-model="ctrl.newComment">
+        </textarea>
+        <br>
+        <button ng-click="ctrl.addComment()">Comment</button>
+    </div>
+</section>
